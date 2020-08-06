@@ -29,7 +29,7 @@ const Job = ({ job }) => {
                 <Card.Text>
                     <Button
                         onClick={() => setOpen(prevOpen => !prevOpen)}
-                        variant="primary">{open ? 'Hide Details' : 'View Details'}
+                        variant="success">{open ? 'Hide Details' : 'View Details'}
                     </Button>
                 </Card.Text>
                 <Collapse in={open}>
