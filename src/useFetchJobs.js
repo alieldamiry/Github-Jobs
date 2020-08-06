@@ -8,7 +8,7 @@ const ACTIONS = {
     UPDATE_HAS_NEXT_PAGE: 'update-has-next-page'
 }
 
-const BASE_URL = 'https://api.allorigins.win/raw?url=https://jobs.github.com/positions.json';
+const BASE_URL = 'https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json';
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -31,7 +31,7 @@ const useFetchJobs = (params, page) => {
             cancelToken: cancelToken1.token,
             params: { markdown: true, page: page, ...params }
         }).then(res => {
-            console.log(res);
+            // console.log(res);
             dispatch({ type: ACTIONS.GET_DATA, payload: { jobs: res.data } })
         }).catch(e => {
             if (axios.isCancel(e)) return
@@ -43,7 +43,7 @@ const useFetchJobs = (params, page) => {
             cancelToken: cancelToken2.token,
             params: { markdown: true, page: page + 1, ...params }
         }).then(res => {
-            console.log(res);
+            // console.log(res);
             dispatch({ type: ACTIONS.UPDATE_HAS_NEXT_PAGE, payload: { hasNextPage: res.data.length !== 0 } })
         }).catch(e => {
             if (axios.isCancel(e)) return
